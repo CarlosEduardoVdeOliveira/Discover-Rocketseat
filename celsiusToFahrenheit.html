@@ -1,0 +1,45 @@
+<!-- 
+    Crie uma função que receba uma string em celsius ou fahrenheit
+    e faça a transformação de uma unidade para outra 
+        C = (F - 32) * 5/9 
+        F = C * 9/5 + 32
+-->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Exercícios - Celsius para Fahrenheit</title>
+ </head>
+ <body>
+     <script>
+        function celsiusToFahrenheit(teperature) {
+            let ceulsiusExists = teperature.toUpperCase().includes('C')
+            let fahrenheitExists = teperature.toUpperCase().includes('F')
+            // Fluxo de erro
+            if (!ceulsiusExists && !fahrenheitExists) {
+                throw new Error("Graus não idetificado")
+            }
+            // Fluxo ideal, F -> C
+            let updatedTeperature = Number(teperature.toUpperCase().replace("F", ""))
+            let formula = fahrenheit => ((fahrenheit - 32) * 5/9).toFixed(2)
+            let degreeSign = " ºC"
+            // Fluxo alternativo, C -> F
+            if (ceulsiusExists) {
+                updatedTeperature = Number(teperature.toUpperCase().replace("C", ""))
+                formula =  celsius => ((celsius * 9/5) + 32).toFixed(2)
+                degreeSign = " ºF"
+            }
+            return formula(updatedTeperature) + degreeSign
+        }
+        try {
+            console.log(celsiusToFahrenheit("10C"))
+            console.log(celsiusToFahrenheit("50F"))
+            console.log(celsiusToFahrenheit("0X"))
+        } catch (error) {
+            console.log(error);
+        }
+     </script>
+ </body>
+ </html>

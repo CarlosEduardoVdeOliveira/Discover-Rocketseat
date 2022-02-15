@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercícios - Buscando no Array</title>
+  </head>
+
+  <body>
+    <script>
+        
+      const booksByCategory = [
+        {
+          category: "Riqueza",
+          books: [
+            {
+              title: "Os segredos da mente milionária",
+              author: "T. Harv Eker",
+            },
+            {
+              title: "O homem mais rico da Babilônia",
+              author: "George S. Clason",
+            },
+            {
+              title: "Pai rico, pai pobre",
+              author: "Robert T. Kiyosaki e Sharon L. Lechter",
+            },
+          ],
+        },
+        {
+          category: "Inteligência Emocional",
+          books: [
+            {
+              title: "Você é Insubstituível",
+              author: "Augusto Cury",
+            },
+            {
+              title: "Ansiedade – Como enfrentar o mal do século",
+              author: "Augusto Cury",
+            },
+            {
+              title: "Os 7 hábitos das pessoas altamente eficazes",
+              author: "Stephen R. Covey",
+            },
+          ],
+        },
+      ];
+    
+    // X Contar o número de categorias e o número de livros em cada categoria
+    const categoryLength = booksByCategory.length
+    console.log(`Total de categorias: ${categoryLength}`);
+    for (let i in booksByCategory) {
+        const categoryName = booksByCategory[i].category
+        const booksLength = booksByCategory[i].books.length
+        console.log(`A categoria ${categoryName} contem ${booksLength} livros`);
+    }
+
+    // X Contar o número de autores
+    const authors = []
+    for (let i in booksByCategory) {
+        const books = booksByCategory[i].books
+        for (const book in books) {
+           const authorName = books[book].author
+           authors.push(authorName)
+        }
+    }
+    const filterAuthors = authors.filter((el, i)=>{
+        return authors.indexOf(el) === i;
+    })
+    console.log(`A quantidade de autores são: ${filterAuthors.length}`);
+
+
+    // X Mostrar livros do autor Augusto Cury
+    function booksAugustoCury(name) {
+      for(const book in booksByCategory){
+        for (let i in booksByCategory[book].books) {
+          const booksAugustoCury = booksByCategory[book].books[i]
+          if (booksAugustoCury.author == name) {
+            console.log(`Livros do ${booksAugustoCury.author} - ${booksAugustoCury.title}`);
+          }
+        }
+      }
+    }
+    booksAugustoCury("Augusto Cury")
+    booksAugustoCury("T. Harv Eker")
+
+    </script>
+  </body>
+</html>
