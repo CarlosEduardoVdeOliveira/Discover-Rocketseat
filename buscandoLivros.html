@@ -50,9 +50,9 @@
     // X Contar o número de categorias e o número de livros em cada categoria
     const categoryLength = booksByCategory.length
     console.log(`Total de categorias: ${categoryLength}`);
-    for (let i in booksByCategory) {
-        const categoryName = booksByCategory[i].category
-        const booksLength = booksByCategory[i].books.length
+    for (let categories in booksByCategory) {
+        const categoryName = booksByCategory[categories].category
+        const booksLength = booksByCategory[categories].books.length
         console.log(`A categoria ${categoryName} contem ${booksLength} livros`);
     }
 
